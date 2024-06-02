@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+   
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <link rel="stylesheet" href="1.css">
+</head>
+<body>
+    <h1>Network Traffic Dashboard</h1>
+   
+    <div class="container">
+        
+        <div class="row">
+            <div class="col-md-6">
+                <canvas id="trafficChart" width="500" height="500"></canvas>
+    
+            </div>
+            <div class="col-md-6">
+              
+              <div class="simple-bar-chart">
+                
+                <div class="item" style="--clr: #5EB344; --val: 80">
+                  <div class="label">00:00</div>
+                  <div class="value">80%</div>
+                </div>
+                
+                <div class="item" style="--clr: #FCB72A; --val: 50">
+                  <div class="label">06:00</div>
+                  <div class="value">50%</div>
+                </div>
+                
+                <div class="item" style="--clr: #F8821A; --val: 100">
+                  <div class="label">12:00</div>
+                  <div class="value">100%</div>
+                </div>
+                
+                <div class="item" style="--clr: #E0393E; --val: 15">
+                  <div class="label">18:00</div>
+                  <div class="value">15%</div>
+                </div>
+                
+                <div class="item" style="--clr: #963D97; --val: 1">
+                  <div class="label">24:00</div>
+                  <div class="value">1%</div>
+                </div>
+                
+                <div class="item" style="--clr: #069CDB; --val: 90">
+                  <div class="label">30:00</div>
+                  <div class="value">90%</div>
+                </div>
+              </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+              <div class="piechart"></div>
+            
+            </div>
+        </div>
+    </div>
+    <script>
+        // Define the data for the graph
+        const labels = ['00:00', '01:00', '02:00', '03:00', '04:00', '05:00', '06:00', '07:00', '08:00', '09:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00', '18:00', '19:00', '20:00', '21:00', '22:00', '23:00'];
+        const data = {
+          labels: labels,
+          datasets: [{
+              label: 'Network Traffic',
+              data: [30, 40, 35, 45, 50, 60, 65, 70, 75, 80, 85, 90, 95, 100, 95, 90, 85, 80, 75, 70, 65, 60, 55, 50],
+              borderColor: 'rgba(75, 192, 192, 1)',
+              fill: false
+            }]
+        };
+      
+        // Create the graph
+        const config = {
+          type: 'line',
+          data: data,
+          options: {
+            responsive: true,
+            plugins: {
+              title: {
+                display: true,
+                text: 'Network Traffic Graph'
+              }
+            },
+            scales: {
+              x: {
+                display: true,
+                title: {
+                  display: true,
+                  text: 'Time'
+                }
+              },
+              y: {
+                display: true,
+                title: {
+                  display: true,
+                  text: 'Traffic (GB)'
+                }
+              }
+            }
+          }
+        };
+      
+        // Get the canvas context and create the chart
+        const trafficChart = new Chart(
+          document.getElementById('trafficChart'),
+          config
+        );
+      </script>
+    <script src="scripts.js"></script>
+</body>
+</html>
